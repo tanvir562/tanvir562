@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact">
+    <title>Contact Us |</title>
+    <link rel="stylesheet" href="style-con.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Tanvir Ahammod</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+                    <li><a href="/ABOUT.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <form action="https://api.web3forms.com/submit" id="myForm" method="post" class="left">
+            <div class="title">
+                <h2>Get in touch</h2>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="ad7e2837-7309-45e2-b49f-e243c16304fb">
+            <input type="text" name="name" placeholder="Your Name" class="inputs" required>
+            <input type="email" name="email" placeholder="Your Email" class="inputs">
+            <textarea type="text" name="message" placeholder="Your Message..." class="inputs" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            // Prevent default form submission
+            event.preventDefault();
+
+            // Get form data
+            var formData = new FormData(this);
+
+            // Send form data using AJAX
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Form submitted successfully!");
+                    } else {
+                        alert("Error submitting form. Please try again later.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Error submitting form. Please try again later.");
+                });
+
+            // Reset the form
+            this.reset();
+        });
+    </script>
+
+</body>
+
+</html>
